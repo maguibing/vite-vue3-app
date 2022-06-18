@@ -1,13 +1,15 @@
 <template>
-  <h1>{{title}}</h1>
-  <button @click="click">子组件</button>
-  <attrs-button class="class"></attrs-button>
+    <h1>{{title}}</h1>
+    <button @click="click">子组件</button>
+    <attrs-button class="class" @click="handle"></attrs-button>
+    <DeepSonVue></DeepSonVue>
 </template>
 <script>
 export default { name:"Son"}
 </script>
 <script setup>
 import AttrsButton from './Attrs.vue'
+import DeepSonVue from './DeepSon.vue';
 import { ref, reactive } from 'vue'
 const title = ref("文章")
 const list = reactive({
@@ -36,6 +38,11 @@ const emits = defineEmits({
 const click = () => {
   emits("enlargeText", 'content')
 }
+
+const handle = () => { 
+    console.log("这里是透传的打印")
+}
+
 
 // 向外暴露的数据
 defineExpose({

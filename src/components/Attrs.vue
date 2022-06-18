@@ -5,6 +5,30 @@
     <button>这是一个透传按钮</button>
     <button>这是一个透传按钮</button>
     <button>这是一个透传按钮</button>
-  <div>123</div>
+    <h4>{{ $attrs.class }}</h4>
+    <div>123</div>
   </div>
 </template>
+
+<script>
+export default {
+    inheritAttrs: true // 禁用透传
+}
+</script>
+
+<script setup>
+import { useAttrs } from 'vue'
+console.log(useAttrs())
+// const props = defineProps({
+//     class: {
+//         type: String,
+//         default:null
+//     }
+// })
+</script>
+
+<style lang='scss' scoped>
+.container{
+    margin-top: 10px;
+}
+</style>

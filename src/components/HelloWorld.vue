@@ -6,12 +6,30 @@
     <son ref="son" :goal="goal" @enlargeText="count++"></son>
     <button @click="(e) => increment('string',e)" :class="classComputed">count:{{count}}</button>
     <global-components></global-components>
+    <h3>插槽练习</h3>
+    <Slot>
+        <template v-slot:default="{title}">
+            <h2>默认作用域插槽内容{{title}}</h2>
+            <h2>具名插槽作用域内容</h2>
+        </template>
+        <template #main='{message}'>
+            <h1>main具名插槽的内容{{message}}</h1>
+        </template>
+    </Slot>
+    <!-- 自定义指令 -->
+    <directive></directive>
+    <br>
+    <!-- pinia 的使用 -->
+    <pinia></pinia>
   </div>
 </template>
 
 <script setup>
-import { ref, computed, onMounted, nextTick, watch, reactive } from 'vue'
+import { ref, computed, onMounted, nextTick, watch, reactive,provide } from 'vue'
 import Son from './Son.vue'
+import Slot from './Slot.vue'
+import Directive from './Directive.vue'
+import Pinia from './Pinia.vue'
 let count = ref(0)
 const son = ref(null)
 const flag = ref(true)
@@ -29,6 +47,9 @@ watch(() => goal.name, (n, o) => {
     console.log(n)
   }
 })
+
+// 依赖注入
+// provide("goal",goal)
 
 onMounted(() => {
   nextTick(() => {
