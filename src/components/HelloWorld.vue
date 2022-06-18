@@ -3,7 +3,7 @@
     <input type="text" v-model='count' name="" id="">
     <input type="checkbox" v-model="toggle" true-value="yes" false-value="no" />
     <h1>{{toggle+''}}</h1>
-    <son ref="son" :goal="goal" @enlarge-text="count++"></son>
+    <son ref="son" :goal="goal" @enlargeText="count++"></son>
     <button @click="(e) => increment('string',e)" :class="classComputed">count:{{count}}</button>
     <global-components></global-components>
   </div>
