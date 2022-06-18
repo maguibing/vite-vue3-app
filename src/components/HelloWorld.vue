@@ -21,9 +21,13 @@
     <br>
     <!-- pinia 的使用 -->
     <pinia></pinia>
+    <br>
+    <router-link :to='`/list`'>这是一个路由按钮</router-link>
   </div>
 </template>
-
+<script>
+export default {name:"HelloWorld"}
+</script>
 <script setup>
 import { ref, computed, onMounted, nextTick, watch, reactive,provide } from 'vue'
 import Son from './Son.vue'
