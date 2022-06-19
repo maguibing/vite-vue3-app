@@ -23,13 +23,19 @@
     <pinia></pinia>
     <br>
     <router-link :to='`/list`'>这是一个路由按钮</router-link>
+    <router-link :to='`/user/${1111}`'>这是一个路由按钮</router-link>
+    <router-link :to='`/user/${2222}`'>这是一个路由按钮</router-link>
+    <router-link :to='`/user/${3333}`'>这是一个路由按钮</router-link>
+    <router-link :to='`/user/${4444}`'>这是一个路由按钮</router-link>
+    <router-link :to='`/user/${5555}`'>这是一个路由按钮</router-link>
   </div>
 </template>
 <script>
 export default {name:"HelloWorld"}
 </script>
 <script setup>
-import { ref, computed, onMounted, nextTick, watch, reactive,provide } from 'vue'
+import { ref, computed, onMounted, nextTick, watch, reactive, provide } from 'vue'
+import { useRoute,onBeforeRouteUpdate } from 'vue-router'
 import Son from './Son.vue'
 import Slot from './Slot.vue'
 import Directive from './Directive.vue'
@@ -41,9 +47,13 @@ const goal = reactive({
   name: "zs"
 })
 const toggle = ref(false)
+
 const classComputed = computed(() => ({
   active: flag.value
 }))
+
+const route = useRoute()
+console.log(route,'route!!!')
 
 // 监听简单数据类型 复杂的数据类型
 watch(() => goal.name, (n, o) => {

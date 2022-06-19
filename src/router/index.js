@@ -2,15 +2,21 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 
 import HelloWorld from '../components/HelloWorld.vue'
 import List from '../components/List.vue'
+import User from '../components/User.vue'
+import UserHome from '../components/UserHome.vue'
 
 const routes = [
   { path: '/', component: HelloWorld },
   { path: '/list', component: List },
+  {
+    path: '/user/:id',
+    component: User,
+    children: [{ path: '', component: UserHome }],
+  },
 ]
 
 const router = createRouter({
-  // 4. 内部提供了 history 模式的实现。为了简单起见，我们在这里使用 hash 模式。
   history: createWebHashHistory(),
-  routes, // `routes: routes` 的缩写
+  routes,
 })
 export default router
