@@ -8,13 +8,13 @@
     <global-components></global-components>
     <h3>插槽练习</h3>
     <Slot>
-        <template v-slot:default="{title}">
-            <h2>默认作用域插槽内容{{title}}</h2>
-            <h2>具名插槽作用域内容</h2>
-        </template>
-        <template #main='{message}'>
-            <h1>main具名插槽的内容{{message}}</h1>
-        </template>
+      <template v-slot:default="{title}">
+        <h2>默认作用域插槽内容{{title}}</h2>
+        <h2>具名插槽作用域内容</h2>
+      </template>
+      <template #main='{message}'>
+        <h1>main具名插槽的内容{{message}}</h1>
+      </template>
     </Slot>
     <!-- 自定义指令 -->
     <directive></directive>
@@ -28,14 +28,16 @@
     <router-link :to='`/user/${3333}`'>这是一个路由按钮</router-link>
     <router-link :to='`/user/${4444}`'>这是一个路由按钮</router-link>
     <router-link :to='`/user/${5555}`'>这是一个路由按钮</router-link>
+    <br>
+    <button @click="Tolist">测试Params</button>
   </div>
 </template>
 <script>
-export default {name:"HelloWorld"}
+export default { name: "HelloWorld" }
 </script>
 <script setup>
 import { ref, computed, onMounted, nextTick, watch, reactive, provide } from 'vue'
-import { useRoute,onBeforeRouteUpdate } from 'vue-router'
+import { useRoute, onBeforeRouteUpdate,useRouter } from 'vue-router'
 import Son from './Son.vue'
 import Slot from './Slot.vue'
 import Directive from './Directive.vue'
@@ -53,7 +55,8 @@ const classComputed = computed(() => ({
 }))
 
 const route = useRoute()
-console.log(route,'route!!!')
+const router = useRouter()
+console.log(route, 'route!!!')
 
 // 监听简单数据类型 复杂的数据类型
 watch(() => goal.name, (n, o) => {
@@ -76,5 +79,10 @@ const increment = (e, v) => {
   goal.name = 'ls'
   console.log(son.value.list)
   console.log(son.value.title)
+}
+
+// 测试params 传参
+const Tolist = () => { 
+    router.push({ name: "user", params: { id: 123 } })
 }
 </script>

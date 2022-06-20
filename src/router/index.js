@@ -10,8 +10,10 @@ const routes = [
   { path: '/list', component: List },
   {
     path: '/user/:id',
+    name: 'user',
     component: User,
-    children: [{ path: '', component: UserHome }],
+    // 当子路由的path 为空时 "" 会默认展示子路由的组件 如果有path 默认第一次加载不会展示UserHome
+    children: [{ path: 'userHome', component: UserHome }],
   },
 ]
 
