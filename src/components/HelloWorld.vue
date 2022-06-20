@@ -30,6 +30,8 @@
     <router-link :to='`/user/${5555}`'>这是一个路由按钮</router-link>
     <br>
     <button @click="Tolist">测试Params</button>
+    <button @click="ToDevelop">前往develop路由</button>
+    <button @click="ToEditor"></button>
   </div>
 </template>
 <script>
@@ -37,7 +39,7 @@ export default { name: "HelloWorld" }
 </script>
 <script setup>
 import { ref, computed, onMounted, nextTick, watch, reactive, provide } from 'vue'
-import { useRoute, onBeforeRouteUpdate,useRouter } from 'vue-router'
+import { useRoute, onBeforeRouteUpdate,useRouter,onBeforeRouteLeave } from 'vue-router'
 import Son from './Son.vue'
 import Slot from './Slot.vue'
 import Directive from './Directive.vue'
@@ -84,5 +86,14 @@ const increment = (e, v) => {
 // 测试params 传参
 const Tolist = () => { 
     router.push({ name: "user", params: { id: 123 } })
+}
+
+// 测试 ToDevelop
+const ToDevelop = () => { 
+    router.push(`/develop`)
+}
+
+const ToEditor = () => { 
+    router.push(`/edit`)
 }
 </script>
