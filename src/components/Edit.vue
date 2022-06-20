@@ -30,5 +30,6 @@ onBeforeUnmount(() => {
 })
 const handleCreated = (editor) => {
     editorRef.value = editor // 记录 editor 实例，重要！
+    // 测试随便做一点修改
 }
 </script>   
